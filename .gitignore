@@ -106,3 +106,5 @@ node_modules/
 # dotenv environment variables file
 .env
 /build
+
+/src/pages/Secret.js
