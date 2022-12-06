@@ -6,12 +6,12 @@ function Search() {
   const [selection, setSelection] = React.useState("team");
 
     const searchByTeam = () => {
-        window.location.href = "/Team/?q=" + document.getElementById("team-query").value;
+        window.location.href = "/Team?q=" + document.getElementById("team-query").value;
     }
 
   return (
     <div style={{backgroundColor: "#101010", overflow: "hidden"}}>
-        <p style={{position: "absolute", bottom: 0, left: 25, color: "grey", zIndex: 100}}>Special thanks to FTCScouts.com for their API.</p>
+        <p style={{position: "absolute", bottom: 0, left: 25, color: "grey", zIndex: 100}}>Special thanks to FTCScout.org for their API.</p>
 
       <img className="text-center" src="https://media.discordapp.net/attachments/829319361843036200/1049493682329501818/Group_8_1.png" height="50%" width="100%" style={{objectFit: "contain"}}/>
       <p style={{marginTop: -50, fontSize: 75, color: "#fff", width: "100%", textAlign: "center"}}>FTC - UAV</p>

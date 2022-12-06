@@ -4,6 +4,8 @@
   "description": "Better scouting & recon for FTC",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.7.1",
+    "graphql": "^16.6.0",
     "mdb-react-ui-kit": "./mdb-react-ui-kit-5.0.0.tgz",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
