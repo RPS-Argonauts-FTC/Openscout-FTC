@@ -10,10 +10,10 @@ function Search() {
     }
 
   return (
-    <div style={{backgroundColor: "#101010", overflow: "hidden"}}>
+    <div style={{overflow: "hidden"}}>
         <p style={{position: "absolute", bottom: 0, left: 25, color: "grey", zIndex: 100}}>Special thanks to FTCScout.org for their API.</p>
-
-      <img className="text-center" src="https://media.discordapp.net/attachments/829319361843036200/1049493682329501818/Group_8_1.png" height="50%" width="100%" style={{objectFit: "contain"}}/>
+        <div style={{position: "absolute", top: 0, left: 0, width: "100%", height: "50vh", backgroundColor: "#202020", zIndex: -1}}/>
+      <img className="text-center" src="https://media.discordapp.net/attachments/829319361843036200/1049493682329501818/Group_8_1.png" style={{objectFit: "contain", width: "100%", height: "50vh"}}/>
       <p style={{marginTop: -50, fontSize: 75, color: "#fff", width: "100%", textAlign: "center"}}>FTC - UAV</p>
       <p style={{textAlign: "center", width: "100%", color: "rgba(255, 255, 255, 0.5)", marginTop: -35}}>Simplistic yet effective scouting software.</p>
       {/* <hr /> */}
@@ -56,7 +56,7 @@ function Search() {
           <div style={{marginTop: 25}}>
             <MDBBtn onClick={() => {
                 searchByTeam();
-            }}style={{width: "150px", borderRadius: 25, height: 50, backgroundColor: "#252525", color: "#92dbfc", boxShadow: "none", border: "none"}}><MDBIcon icon="search" className="me-2" />Search</MDBBtn>
+            }}style={{width: "150px", borderRadius: 15, height: 50, backgroundColor: "#252525", color: "#92dbfc", boxShadow: "none", border: "none"}}><MDBIcon icon="search" className="me-2" />Search</MDBBtn>
           </div>
           </div>
         </MDBTabsPane>
@@ -65,7 +65,7 @@ function Search() {
           <div flex className="text-center" style={{marginTop: 15}}>
           <input placeholder='Eg: "December 6th Upper League Meet"' style={{display: "flex", height: 50, borderRadius: 20, paddingLeft: 20, width: "100%", border: "none", backgroundColor: "#252525", color: "white"}} />
           <div style={{marginTop: 25}}>
-            <MDBBtn style={{width: "150px", borderRadius: 25, height: 50, backgroundColor: "#252525", color: "#92dbfc", boxShadow: "none", border: "none"}}><MDBIcon icon="search" className="me-2" />Search</MDBBtn>
+            <MDBBtn style={{width: "150px", borderRadius: 15, height: 50, backgroundColor: "#252525", color: "#92dbfc", boxShadow: "none", border: "none"}}><MDBIcon icon="search" className="me-2" />Search</MDBBtn>
           </div>
           </div>
         </MDBTabsPane>
