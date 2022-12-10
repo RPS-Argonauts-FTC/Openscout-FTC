@@ -26,8 +26,15 @@ function Team() {
     return <div>
         <img className="text-center" src="https://media.discordapp.net/attachments/829319361843036200/1049688339458052176/Group_12.png" style={{objectFit: "contain", width: "100%", height: "50vh"}}/>
         <p style={{marginTop: -50, fontSize: 75, color: "#fff", width: "100%", textAlign: "center"}}>Results for "{teamQuery}"</p>
-        <div className="justify-content-center" style={{marginTop: 50, width: "100%"}}>
-            {loading ? <p>Loading...</p> : data.teamsSearch.map((team) => <TeamCard {...team} />)}
+        <div className="justify-content-center" style={{width: "100%"}}>
+            <center>
+                <MDBBtn color="dark" style={{marginBottom: 50}} onClick = {() => {
+                    window.location.href = "/";
+                }}>
+                    Return
+                </MDBBtn>
+                {loading ? <p>Loading...</p> : data.teamsSearch.map((team) => <TeamCard {...team} />)}
+            </center>
         </div>
     </div>;
 }

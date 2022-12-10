@@ -1,7 +1,10 @@
 import React from 'react';
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardHeader, MDBContainer, MDBIcon, MDBInput, MDBTabs, MDBTabsContent, MDBTabsItem, MDBTabsLink, MDBTabsPane, MDBTextArea } from 'mdb-react-ui-kit';
+import { MDBAutocomplete, MDBBtn, MDBCard, MDBCardBody, MDBCardHeader, MDBContainer, MDBDatepicker, MDBDropdown, MDBDropdownItem, MDBDropdownMenu, MDBDropdownToggle, MDBIcon, MDBInput, MDBTabs, MDBTabsContent, MDBTabsItem, MDBTabsLink, MDBTabsPane, MDBTextArea } from 'mdb-react-ui-kit';
 
 function Search() {
+
+  // all states
+  const regions = ["Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]
 
   const [selection, setSelection] = React.useState("team");
 
@@ -22,8 +25,8 @@ function Search() {
         <MDBTabsItem style={{display: "flex"}}>
           <MDBTabsLink style={{color: "#92dbfc", 
           backgroundColor: selection !== "team" ? "#303030" : "#fff",
-          borderTopLeftRadius: 20, 
-          height: 50, borderBottomLeftRadius: 20}}  onClick={() => {
+          borderTopLeftRadius: 15, 
+          height: 50, borderBottomLeftRadius: 15}}  onClick={() => {
             setSelection("team");
           }}
           active={selection === "team"}
@@ -32,7 +35,7 @@ function Search() {
           </MDBTabsLink>
           <MDBTabsLink style={{color: "#92dbfc", 
           backgroundColor: selection !== "event" ? "#303030" : "#fff",
-          borderTopRightRadius: 20, borderBottomRightRadius: 20}} onClick={() => {
+          borderTopRightRadius: 15, borderBottomRightRadius: 15}} onClick={() => {
             setSelection("event");
           }}
           active={selection === "event"}
@@ -63,7 +66,15 @@ function Search() {
         <MDBTabsPane show={selection === "event"} style={{width: "100%", height: "", padding: 50, paddingTop: 0, backgroundColor: "#101010", borderTopLeftRadius: 20, borderTopRightRadius: 20}}>
           {/* <h3 style={{color: "#fff"}} className="text-center">Event Date / Name </h3> */}
           <div flex className="text-center" style={{marginTop: 15}}>
-          <input placeholder='Eg: "December 6th Upper League Meet"' style={{display: "flex", height: 50, borderRadius: 20, paddingLeft: 20, width: "100%", border: "none", backgroundColor: "#252525", color: "white"}} />
+          <input placeholder='Eg: "12/3/2022" for December 3rd 2022' style={{display: "flex", height: 50, borderRadius: 20, paddingLeft: 20, width: "100%", border: "none", backgroundColor: "#252525", marginBottom: 15, color: "white"}} />
+          <MDBAutocomplete placeholder='Region' style={{display: "flex", height: 50, borderRadius: 20, paddingLeft: 20, width: "100%", border: "none", backgroundColor: "#252525", color: "white"}} 
+          dataFilter={(value) => {
+            return regions.filter((item) => {
+              return item.toLowerCase().startsWith(value.toLowerCase());
+            });
+          }}
+          />
+          {/* <MDBDatepicker icon='fas fa-calendar' title="Select Event Date" style={{color: "#fff"}}/> */}
           <div style={{marginTop: 25}}>
             <MDBBtn style={{width: "150px", borderRadius: 15, height: 50, backgroundColor: "#252525", color: "#92dbfc", boxShadow: "none", border: "none"}}><MDBIcon icon="search" className="me-2" />Search</MDBBtn>
           </div>
