@@ -17,7 +17,7 @@ function Search() {
         <p style={{position: "absolute", bottom: 0, left: 25, color: "grey", zIndex: 100}}>Special thanks to FTCScout.org for their API.</p>
         <div style={{position: "absolute", top: 0, left: 0, width: "100%", height: "50vh", backgroundColor: "#202020", zIndex: -1}}/>
       <img className="text-center" src="https://media.discordapp.net/attachments/829319361843036200/1049493682329501818/Group_8_1.png" style={{objectFit: "contain", width: "100%", height: "50vh"}}/>
-      <p style={{marginTop: -50, fontSize: 75, color: "#fff", width: "100%", textAlign: "center"}}>FTC - UAV</p>
+      <p style={{marginTop: -50, fontSize: 75, color: "#fff", width: "100%", textAlign: "center"}}>OpenScout</p>
       <p style={{textAlign: "center", width: "100%", color: "rgba(255, 255, 255, 0.5)", marginTop: -35}}>Simplistic yet effective scouting software.</p>
       {/* <hr /> */}
       
