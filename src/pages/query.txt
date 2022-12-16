@@ -1,0 +1,15 @@
+{
+  eventsSearch(region: USNJ, onlyWithMatches: true, start: "12/10/2022", end: "12/10/2022", limit: 10, season: 2022, eventTypes:TRAD){
+    teams {
+      teamNumber
+      matches {
+        match {
+         	teams {
+            teamNumber
+            station
+          } 
+        }
+      }
+    }
+  }
+}
