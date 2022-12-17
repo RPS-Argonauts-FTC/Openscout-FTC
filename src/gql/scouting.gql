@@ -1,0 +1,93 @@
+{
+  teamByNumber(number: 21630)
+  {
+    name
+    schoolName
+  	rookieYear
+    matches (season: 2022)
+    {
+      match {
+        matchDescription
+        matchNum
+        
+        scores {
+          __typename 
+          ... on MatchScores2022
+            {
+              red {
+                autoNavigation1
+                autoNavigation2
+                autoTerminalCones
+                autoGroundCones
+                autoLowCones
+                autoMediumCones
+                autoHighCones
+                dcTerminalCones
+                dcGroundCones
+                dcLowCones
+                dcMediumCones
+                dcHighCones
+                endgameNavigated1
+                endgameNavigated2
+                coneOwnedJunctions
+                beaconOwnedJunctions
+                circuit
+                minorPenalties
+                majorPenalties
+                autoNavigationPoints
+                autoConePoints
+                endgameNavigationPoints
+                ownershipPoints
+                circuitPoints
+                autoPoints
+                dcPoints
+                endgamePoints
+                penaltyPoints
+                totalPoints
+                totalPointsNp
+              }
+              blue {
+                autoNavigation1
+                autoNavigation2
+                autoTerminalCones
+                autoGroundCones
+                autoLowCones
+                autoMediumCones
+                autoHighCones
+                dcTerminalCones
+                dcGroundCones
+                dcLowCones
+                dcMediumCones
+                dcHighCones
+                endgameNavigated1
+                endgameNavigated2
+                coneOwnedJunctions
+                beaconOwnedJunctions
+                circuit
+                minorPenalties
+                majorPenalties
+                autoNavigationPoints
+                autoConePoints
+                endgameNavigationPoints
+                ownershipPoints
+                circuitPoints
+                autoPoints
+                dcPoints
+                endgamePoints
+                penaltyPoints
+                totalPoints
+                totalPointsNp
+              }
+          }
+        }
+        
+        teams {
+          station
+          teamNumber
+        }
+        
+        hasBeenPlayed
+      }
+    }
+  }
+}

@@ -14,7 +14,6 @@ function EventCard ({event, ...props}) {
                 </div>
         </div>
         <MDBBtnGroup>
-            {event.liveStreamURL && <MDBBtn color="link" href={event.event.liveStreamURL} target="_blank">Watch On YT</MDBBtn>}
             <MDBBtn color="link" onClick={() => {
                 
             }}>Download Detailed Scouting Report</MDBBtn>
@@ -85,7 +84,6 @@ function Events() {
         season: ${szn},
         onlyWithMatches: false, 
         eventTypes: ${eventType}){
-            liveStreamURL
             name
             remote
             teams {
