@@ -1,5 +1,13 @@
 {
-  eventsSearch(region: USNJ, onlyWithMatches: true, start: "12/10/2022", end: "12/10/2022", limit: 10, season: 2022, eventTypes:TRAD){
+  eventsSearch(region: USNJ,
+    start: "12/10/2022",
+    end: "12/10/2022", 
+    limit: 10, 
+    season: 2022,
+    onlyWithMatches: false, 
+    eventTypes: TRAD_AND_REMOTE){
+    name
+    remote
     teams {
       teamNumber
       matches {
