@@ -21,7 +21,9 @@ export default function SearchByEvent({callbackOnSearch, ...props})
         }
     }
 
-    console.log(region)
+    useEffect(() => {
+        document.getElementById("dummy-input").value = region;
+    }, []);
 
     //all regions of FTC events according to FTCScout.org API
     const regions = `
@@ -127,32 +129,34 @@ ZA`.split("\n");
                 }}
             />
         </div>
-    <MDBAutocomplete id="region-value" placeholder='Region (If in USA prefix state w/ US)' style={{display: "flex", height: 50, borderRadius: 15, paddingLeft: 20, textAlign: "center", width: "100%", border: "none", backgroundColor: "#252525", color: "#fff"}} 
-    dataFilter={(value) => {
-      return regions.filter((item) => {
-        return item.toLowerCase().includes(value.toLowerCase());
-      });
-    }}
-    onSelect={(value) => {
-        setRegion(value);
-    }}
+        <div style={{position: "relative", height: 50, marginTop: 15, marginBottom: 15}}>
+            <input id = "dummy-input" readOnly style={{fontSize: 12, position: "absolute", width: "100%", height: "50px", left: 0, top: -1, borderRadius: 15, backgroundColor: "#252525", border: "none", color: "#fff", paddingLeft: 20, textAlign:"center"}} />
+            <MDBAutocomplete id="region-value" placeholder='Region (If in USA prefix state w/ US)' style={{position: "absolute", height: 50, borderRadius: 15, paddingLeft: 20, textAlign: "center", width: "100%", border: "none", backgroundColor: "#252525", color: "#fff", opacity: 0}} 
+            dataFilter={(value) => {
+            return regions.filter((item) => {
+                return item.toLowerCase().includes(value.toLowerCase());
+            });
+            }}
+            onSelect={(value) => {
+                setRegion(value);
+                document.getElementById("dummy-input").value = value;
+            }}
 
-    onChange={(event) => {
-        setRegion(event.target.value);
-    }}
+            onChange={(event) => {
+                setRegion(event.target.value);
+                document.getElementById("dummy-input").value = event.target.value;
+            }}
 
-    onClose={() => {
-        //if the region value is not in the list set region to all
-        if(region === "" || !regions.includes(region))
-        {
-            setRegion("ALL");
-            setTimeout(() => {
-                document.getElementById("region-value").value = "ALL";
-            }, 100);
-        }
-    }}
-    
-    />
+            onClose={() => {
+                //if the region value is not in the list set region to all
+                if(region === "" || !regions.includes(region))
+                {
+                    setRegion("ALL");
+                    document.getElementById("dummy-input").value = "ALL";
+                }
+            }}
+            />
+        </div>
     <MDBDropdown style={{marginTop: 15}}>
       <MDBDropdownToggle color="link" style={{height: 50, borderRadius: 15, paddingLeft: 20, width: "100%", border: "none", backgroundColor: "#252525", color: "#fff", marginBottom: 15}}>
         {prettifyTypeText()}</MDBDropdownToggle>
