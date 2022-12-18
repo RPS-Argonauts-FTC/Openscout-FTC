@@ -3,7 +3,7 @@
   "version": "5.0.0",
   "description": "Better scouting & recon for FTC",
   "homepage": "https://rps-argonauts-ftc.github.io/Openscout-FTC/",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@apollo/client": "^3.7.1",
     "gh-pages": "^4.0.0",
