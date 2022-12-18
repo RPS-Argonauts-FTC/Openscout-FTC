@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Openscout-FTC/static/css/main.3c8f6c8d.css",
-    "main.js": "/Openscout-FTC/static/js/main.36a8e890.js",
+    "main.js": "/Openscout-FTC/static/js/main.5c21461b.js",
     "static/js/787.c092a430.chunk.js": "/Openscout-FTC/static/js/787.c092a430.chunk.js",
     "index.html": "/Openscout-FTC/index.html",
     "main.3c8f6c8d.css.map": "/Openscout-FTC/static/css/main.3c8f6c8d.css.map",
-    "main.36a8e890.js.map": "/Openscout-FTC/static/js/main.36a8e890.js.map",
+    "main.5c21461b.js.map": "/Openscout-FTC/static/js/main.5c21461b.js.map",
     "787.c092a430.chunk.js.map": "/Openscout-FTC/static/js/787.c092a430.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3c8f6c8d.css",
-    "static/js/main.36a8e890.js"
+    "static/js/main.5c21461b.js"
   ]
 }
