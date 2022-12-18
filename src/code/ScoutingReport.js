@@ -157,7 +157,7 @@ export function ScoutByNumber({teamNumber})
 
     console.log(finalData)
 
-    if (loading) return <p>Getting {teamNumber} - Loading...</p>;
+    if (loading) return <p>Getting {teamNumber} - Fetching FTCScout API...</p>;
 
     return <div><p>Getting {teamNumber} - Querying Gameplay Analyzer AI...</p></div>;
 }

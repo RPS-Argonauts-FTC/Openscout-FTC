@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardHeader, MDBContainer, MDBIcon, MDBInput, MDBTabs, MDBTabsContent, MDBTabsItem, MDBTabsLink, MDBTabsPane, MDBTextArea } from 'mdb-react-ui-kit';
-import { useQuery } from '@apollo/client';
-import { GET_TEAMS } from '../gql/Query';
+import { gql, useQuery } from '@apollo/client';
 
 function TeamCard (props) {
     return <MDBCard style={{ width: '75%', backgroundColor: "#202020", marginBottom: 15}}>
@@ -18,8 +17,16 @@ function Team() {
 
     //get query parameters
     const urlParams = new URLSearchParams(window.location.search);
-    const teamQuery = urlParams.get('q');
-    const {loading, error, data} = useQuery(GET_TEAMS);
+    const teamQuery = urlParams.get('query');
+    const {loading, error, data} = useQuery(gql`
+    query GetTeams{
+        teamsSearch(limit: 20, searchText: "${teamQuery}")
+        {
+            name
+            schoolName
+        }
+    }
+    `);
 
     console.log(data);    
 
