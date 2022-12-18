@@ -40,9 +40,15 @@ function EventCard ({event, runIndepthSearch, setRunIndepthSearch, ...props}) {
                                     <b>Match {match.match.matchNum}</b></summary>
                                     <div>
                                         {
-                                            match.match.teams.map((team) => <div>
+                                            match.match.teams && match.match.teams.map((team) => <div>
                                                 <p>Team {team.teamNumber} {team.station.split("_")[0] === "RED" ? "🟥" : "🔵"} {team.station.split("_")[1]}</p>
                                             </div>)
+                                        }
+                                        {
+                                            match.match.scores && <div>
+                                                <p>🟥 {match.match.scores.red.totalPoints}</p>
+                                                <p>🔵: {match.match.scores.blue.totalPoints}</p>
+                                            </div>
                                         }
                                     </div>  
                                 </details>
@@ -85,33 +91,46 @@ function Events() {
 
     const {loading, error, data} = useQuery(gql`
     {
-        eventsSearch(region: ${region},
-        start: "${date}",
-        end: "${date}", 
-        limit: 20, 
-        season: ${szn},
-        onlyWithMatches: false, 
-        eventTypes: ${eventType}){
-            name
-            remote
-            teams {
-                teamNumber
-                matches {
-                    match {
-                        matchNum
-                        teams {
-                        teamNumber
-                        station
-                        } 
-                    }
+        eventsSearch(
+          region: ${region},
+          start: "${date}",
+          end: "${date}", 
+          limit: 100
+          season: ${szn},
+          onlyWithMatches: false
+          eventTypes: ${eventType}
+        ) {
+          name
+          remote
+          teams {
+            teamNumber
+            matches {
+              match {
+                matchNum
+                teams {
+                  teamNumber
+                  station
                 }
+                scores {
+                  __typename
+                  ... on MatchScores2022 {
+                    red {
+                      totalPoints
+                    }
+                    blue {
+                      totalPoints
+                    }
+                  }
+                }
+              }
             }
+          }
         }
-    }
+      }
     `
     );
 
-    // console.log(data);    
+    console.log(data);    
 
     return <div>
         <MDBModal staticBackdrop show={runIndepthSearch !== -1}>

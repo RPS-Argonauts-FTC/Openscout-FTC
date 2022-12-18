@@ -157,7 +157,7 @@ export function ScoutByNumber({teamNumber})
 
     console.log(finalData)
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <p>Getting {teamNumber} - Loading...</p>;
 
-    return <div><p>Querying AI...</p></div>;
+    return <div><p>Getting {teamNumber} - Querying Gameplay Analyzer AI...</p></div>;
 }

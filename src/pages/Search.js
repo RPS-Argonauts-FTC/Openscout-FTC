@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { MDBAutocomplete, MDBBtn, MDBCard, MDBCardBody, MDBCardHeader, MDBCheckbox, MDBContainer, MDBDatepicker, MDBDropdown, MDBDropdownItem, MDBDropdownMenu, MDBDropdownToggle, MDBIcon, MDBInput, MDBTabs, MDBTabsContent, MDBTabsItem, MDBTabsLink, MDBTabsPane, MDBTextArea, MDBTooltip } from 'mdb-react-ui-kit';
 import SearchByEvent from '../components/SearchByEvent';
 
@@ -19,9 +19,12 @@ function Search() {
     <div style={{overflow: "hidden"}}>
         <p style={{position: "absolute", top: 0, left: 0, color: "#000", zIndex: 100}}>Special thanks to FTCScout.org for their API.</p>
         <div style={{position: "absolute", top: 0, left: 0, width: "100%", height: "50vh", backgroundColor: "#202020", zIndex: -1}}/>
-      <img className="text-center" src="https://media.discordapp.net/attachments/829319361843036200/1049493682329501818/Group_8_1.png" style={{objectFit: "contain", width: "100%", height: "50vh"}}/>
+        <Suspense>
+          <img className="text-center" src="https://media.discordapp.net/attachments/1053480529355354145/1053922509071855696/Group_9_1.png" style={{objectFit: "contain", width: "100%", height: "50vh", marginTop: 5}}/>
+        </Suspense>
       <p style={{marginTop: -50, fontSize: 75, color: "#fff", width: "100%", textAlign: "center"}}>OpenScout</p>
-      <p style={{textAlign: "center", width: "100%", color: "rgba(255, 255, 255, 0.5)", marginTop: -35}}>Simplistic yet effective scouting software by <a href="https://argonautsftc.org" style={{color: "#3bcbff"}} target="_blank">FTC21630</a></p>
+      <p style={{textAlign: "center", width: "100%", color: "rgba(255, 255, 255, 0.5)", marginTop: -35}}>Events + Past Performance + Data AI = W </p>
+      <p style={{position: "absolute", bottom: 0, right: 25, color: "rgba(255, 255, 255, 0.5)"}}>By <a href="https://argonautsftc.org" style={{color: "#3bcbff"}} target="_blank">FTC21630</a></p>
       {/* <hr /> */}
       
       {/* <MDBTabs style={{width: "100%", justifyContent: "center", marginTop: 50}}>
