@@ -20,7 +20,7 @@ function Team() {
     const teamQuery = urlParams.get('query');
     const {loading, error, data} = useQuery(gql`
     query GetTeams{
-        teamsSearch(limit: 20, searchText: "${teamQuery}")
+        teamsSearch(limit: 100, searchText: "${teamQuery}")
         {
             name
             schoolName

@@ -8,6 +8,7 @@ export default function SearchByTeam({ callbackOnSearch, ...props }) {
                 id="team-query"
                 placeholder='Eg: "21630" or "Argonauts"'
                 style={{
+                    fontSize: 14,
                     display: "flex",
                     height: 50,
                     borderRadius: 20,
