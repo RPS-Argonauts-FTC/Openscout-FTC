@@ -259,6 +259,6 @@ export function ScoutByNumber({teamNumber})
     return <>
         <p>{loading ? <p>Getting {teamNumber} - Fetching FTCScout API...</p> : <div><p></p></div>}</p>
         {(finalData && finalData.number !== 21630) && <Stats finalData={finalData} />}
-        {(finalData && finalData.number === 21630) && <><hr/><h1>21630 - We aren't just gonna let you use our software against us you know...</h1><p style={{color: "#aaa"}}>Instead, you should scout <a style={{ color: "#92dbfc" }} href="/Team?query=11697">11697.</a></p></>}
+        {(finalData && finalData.number === 21630) && <><hr/><h1>21630 - We aren't just gonna let you use our software against us you know...</h1><p style={{color: "#aaa"}}>Instead, you should scout <a style={{ color: "#92dbfc" }} href="/Team?query=11697">11697</a>{", our mentor team :). (you're welcome Patrick & Larry)"}</p></>}
       </>
 }

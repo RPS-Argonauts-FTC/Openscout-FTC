@@ -1,11 +1,12 @@
 import React, { Suspense } from 'react';
-import { MDBAutocomplete, MDBBadge, MDBBtn, MDBCard, MDBCardBody, MDBCardHeader, MDBCheckbox, MDBContainer, MDBDatepicker, MDBDropdown, MDBDropdownItem, MDBDropdownMenu, MDBDropdownToggle, MDBIcon, MDBInput, MDBTabs, MDBTabsContent, MDBTabsItem, MDBTabsLink, MDBTabsPane, MDBTextArea, MDBTooltip } from 'mdb-react-ui-kit';
+import { MDBAutocomplete, MDBBadge, MDBBtn, MDBCard, MDBCardBody, MDBCardHeader, MDBCheckbox, MDBCollapse, MDBContainer, MDBDatepicker, MDBDropdown, MDBDropdownItem, MDBDropdownMenu, MDBDropdownToggle, MDBIcon, MDBInput, MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav, MDBNavbarToggler, MDBTabs, MDBTabsContent, MDBTabsItem, MDBTabsLink, MDBTabsPane, MDBTextArea, MDBTooltip } from 'mdb-react-ui-kit';
 import SearchByEvent from '../components/SearchByEvent';
 import SearchByTeam from '../components/SearchByTeam';
 
 function Search() {
 
   const [selection, setSelection] = React.useState("team");
+  const [showNav, setShowNav] = React.useState(false);
 
     const searchByTeam = () => {
         window.location.href = "/Team?query=" + document.getElementById("team-query").value;
@@ -18,7 +19,31 @@ function Search() {
 
   return (
     <div style={{overflow: "hidden"}}>
-        <a style={{position: "absolute", bottom: 35, left: 25, color: "#aaa", zIndex: 100}} href="https://github.com/RPS-Argonauts-FTC/Openscout-FTC" target="_blank">GitHub</a>
+      <MDBNavbar style={{position: "absolute", width: "100%", top:0, left: 0}} expand='lg' dark bgColor='none'>
+      <MDBContainer fluid>
+        <MDBNavbarBrand href='#'>OpenScout</MDBNavbarBrand>
+        <MDBNavbarToggler
+          type='button'
+          aria-expanded='false'
+          aria-label='Toggle navigation'
+          onClick={() => setShowNav(!showNav)}
+        >
+          <MDBIcon icon='bars' fas />
+        </MDBNavbarToggler>
+        <MDBCollapse navbar show={showNav}>
+          <MDBNavbarNav className='d-flex w-auto'>
+            <MDBNavbarItem>
+              <MDBNavbarLink href='https://argonautsftc.org' target='_blank'>By FTC21630</MDBNavbarLink>
+            </MDBNavbarItem>
+            <MDBNavbarItem>
+              <MDBNavbarLink href='https://github.com/RPS-Argonauts-FTC/Openscout-FTC' target='_blank'>GitHub</MDBNavbarLink>
+            </MDBNavbarItem>
+          </MDBNavbarNav>
+        </MDBCollapse>
+      </MDBContainer>
+    </MDBNavbar>
+
+        {/* <a style={{position: "absolute", bottom: 35, left: 25, color: "#aaa", zIndex: 100}} href="https://github.com/RPS-Argonauts-FTC/Openscout-FTC" target="_blank">GitHub</a> */}
         <p style={{position: "absolute", bottom: 0, left: 25, color: "#202020", zIndex: 100}}>Special thanks to FTCScout.org for their GraphQL API.</p>
         <div style={{position: "absolute", top: 0, left: 0, width: "100%", height: "50vh", backgroundColor: "#202020", zIndex: -1}}/>
         <Suspense>
@@ -26,7 +51,7 @@ function Search() {
         </Suspense>
       <p style={{marginTop: -50, fontSize: 75, color: "#fff", width: "100%", textAlign: "center", letterSpacing: 2}}>OpenScout</p>
       <p style={{textAlign: "center", width: "100%", color: "rgba(255, 255, 255, 0.5)", marginTop: -35}}>{"Events + Performance Analysis + Data AI = Big W"}</p>
-      <p style={{position: "absolute", bottom: 0, right: 25, color: "rgba(255, 255, 255, 0.5)"}}>By <a href="https://argonautsftc.org" style={{color: "#92dbfc"}} target="_blank">FTC21630</a></p>
+      {/* <p style={{position: "absolute", bottom: 0, right: 25, color: "rgba(255, 255, 255, 0.5)"}}>By <a href="https://argonautsftc.org" style={{color: "#92dbfc"}} target="_blank">FTC21630</a></p> */}
       
       <MDBTabs style={{width: "100%", justifyContent: "center", marginTop: 50}}>
         <MDBTabsItem style={{display: "flex"}}>
