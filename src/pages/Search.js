@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { MDBAutocomplete, MDBBtn, MDBCard, MDBCardBody, MDBCardHeader, MDBCheckbox, MDBContainer, MDBDatepicker, MDBDropdown, MDBDropdownItem, MDBDropdownMenu, MDBDropdownToggle, MDBIcon, MDBInput, MDBTabs, MDBTabsContent, MDBTabsItem, MDBTabsLink, MDBTabsPane, MDBTextArea, MDBTooltip } from 'mdb-react-ui-kit';
+import { MDBAutocomplete, MDBBadge, MDBBtn, MDBCard, MDBCardBody, MDBCardHeader, MDBCheckbox, MDBContainer, MDBDatepicker, MDBDropdown, MDBDropdownItem, MDBDropdownMenu, MDBDropdownToggle, MDBIcon, MDBInput, MDBTabs, MDBTabsContent, MDBTabsItem, MDBTabsLink, MDBTabsPane, MDBTextArea, MDBTooltip } from 'mdb-react-ui-kit';
 import SearchByEvent from '../components/SearchByEvent';
 
 function Search() {
@@ -17,7 +17,7 @@ function Search() {
 
   return (
     <div style={{overflow: "hidden"}}>
-        <p style={{position: "absolute", top: 0, left: 0, color: "#000", zIndex: 100}}>Special thanks to FTCScout.org for their API.</p>
+        <p style={{position: "absolute", bottom: 0, left: 25, color: "#202020", zIndex: 100}}>Special thanks to FTCScout.org for their GraphQL API.</p>
         <div style={{position: "absolute", top: 0, left: 0, width: "100%", height: "50vh", backgroundColor: "#202020", zIndex: -1}}/>
         <Suspense>
           <img className="text-center" src="https://media.discordapp.net/attachments/1053480529355354145/1053922509071855696/Group_9_1.png" style={{objectFit: "contain", width: "100%", height: "50vh", marginTop: 5}}/>

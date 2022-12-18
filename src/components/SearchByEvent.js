@@ -1,5 +1,6 @@
 import {
     MDBAutocomplete,
+    MDBBadge,
     MDBBtn,
     MDBCard,
     MDBCardBody,
@@ -196,7 +197,7 @@ ZA`.split("\n");
                     position: "relative",
                     height: 50,
                     marginTop: 15,
-                    marginBottom: 15,
+                    marginBottom: 20,
                 }}
             >
                 <input
@@ -300,7 +301,7 @@ ZA`.split("\n");
                     </MDBDropdownItem>
                 </MDBDropdownMenu>
             </MDBDropdown>
-            <div style={{ marginTop: 15 }}>
+            <div style={{ marginTop: 15, position: "relative"}}>
                 <MDBBtn
                     onClick={() => {
                         callbackOnSearch(date, region, eventType);
@@ -318,6 +319,9 @@ ZA`.split("\n");
                     <MDBIcon icon="search" className="me-2" />
                     Search
                 </MDBBtn>
+                <MDBBadge color="warning" pill notification style={{position: "absolute", top: 0, marginLeft: -20, marginTop: -5, paddingInlineStart: 5, paddingInlineEnd: 5}}>
+                    BETA
+                </MDBBadge>
             </div>
         </div>
     );

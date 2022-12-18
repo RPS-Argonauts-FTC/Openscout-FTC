@@ -145,8 +145,14 @@ function Events() {
                 </MDBModalContent>
             </MDBModalDialog>
         </MDBModal>
-        <img className="text-center" src="https://media.discordapp.net/attachments/829319361843036200/1049688339458052176/Group_12.png" style={{objectFit: "contain", width: "100%", height: "50vh", zIndex: -100}}/>
-        <p style={{position: "absolute", top: 75, fontSize: 75, color: "#fff", width: "100%", textAlign: "center"}}>Results</p>
+        <img className="text-center" src={
+            (data && data.eventsSearch.length !== 0) ? "https://media.discordapp.net/attachments/1053480529355354145/1053923846442467368/Group_12_1.png"
+            : "https://media.discordapp.net/attachments/1053480529355354145/1053923852087996466/Group_13.png"
+        } style={{objectFit: "contain", width: "100%", height: "50vh", zIndex: -100}}/>
+        <p style={{position: "absolute", top: 75, fontSize: 75, color: "#fff", width: "100%", textAlign: "center"}}>{
+            (loading || data && data.eventsSearch.length !== 0) ? "Results"
+            : "No Results Found"
+        }</p>
         <MDBBtn color="dark" style={{position: "absolute", top: 0, width: "100px", left: 0}} onClick = {() => {
             window.location.href = "/";
         }}>
@@ -154,7 +160,7 @@ function Events() {
         </MDBBtn>
         <div className="justify-content-center" style={{position: "absolute", width: "100%", top: 250}}>
             <center style={{zIndex: 100}}>
-                {loading ? <p>Loading...</p> : data.eventsSearch.length === 0 ? <p>No results found.</p> : data.eventsSearch.map((event) => <EventCard runIndepthSearch={runIndepthSearch} setRunIndepthSearch={setRunIndepthSearch} event={event} />)}
+                {loading ? <p>Loading...</p> : data.eventsSearch.length !== 0 && data.eventsSearch.map((event) => <EventCard runIndepthSearch={runIndepthSearch} setRunIndepthSearch={setRunIndepthSearch} event={event} />)}
             </center>
         </div>
     </div>;
