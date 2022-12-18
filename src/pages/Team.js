@@ -126,13 +126,21 @@ function Team() {
 
     return (
         <div>
-            <MDBModal show={runIndepthSearch !== -1} onHide={() => setRunIndepthSearch(-1)}>
+            {runIndepthSearch !== -1 && <MDBModal staticBackdrop show={true} onHide={() => setRunIndepthSearch(-1)}>
                 <MDBModalDialog size="xl">
                     <MDBModalContent
                         style={{ backgroundColor: "#303030", color: "white" }}
                     >
                         <MDBModalHeader>
                             <h1>Detailed Scouting Report</h1>
+                            <MDBBtn
+                                onClick={() => {
+                                    setRunIndepthSearch(-1);
+                                }}
+                                color="link"
+                            >
+                                Close
+                            </MDBBtn>
                         </MDBModalHeader>
                         <MDBModalBody>
                             <ScoutByNumber
@@ -142,7 +150,7 @@ function Team() {
                         </MDBModalBody>
                     </MDBModalContent>
                 </MDBModalDialog>
-            </MDBModal>
+            </MDBModal>}
             <img
                 className="text-center"
                 src={

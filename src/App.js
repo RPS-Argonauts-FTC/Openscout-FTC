@@ -6,6 +6,8 @@ import Search from './pages/Search';
 import Team from './pages/Team';
 import Events from './pages/Events';
 
+global.csvDownloadContents = [];
+
 function App() {
   return (
     <>

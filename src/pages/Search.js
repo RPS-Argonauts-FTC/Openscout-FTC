@@ -18,6 +18,7 @@ function Search() {
 
   return (
     <div style={{overflow: "hidden"}}>
+        <a style={{position: "absolute", bottom: 35, left: 25, color: "#aaa", zIndex: 100}} href="https://github.com/RPS-Argonauts-FTC/Openscout-FTC" target="_blank">GitHub</a>
         <p style={{position: "absolute", bottom: 0, left: 25, color: "#202020", zIndex: 100}}>Special thanks to FTCScout.org for their GraphQL API.</p>
         <div style={{position: "absolute", top: 0, left: 0, width: "100%", height: "50vh", backgroundColor: "#202020", zIndex: -1}}/>
         <Suspense>

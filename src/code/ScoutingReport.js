@@ -1,6 +1,40 @@
-import { gql, useQuery } from "@apollo/client";
+import { concat, gql, useQuery } from "@apollo/client";
 import { MDBDatatable, MDBModalBody, MDBModalContent, MDBModalDialog, MDBModalHeader } from "mdb-react-ui-kit";
 import { useEffect, useState } from "react";
+
+function getCSV(dataCol, dataRow)
+{
+  const data = [dataCol];
+
+  dataRow.forEach((row) => {
+    data.push(row);
+  });
+
+  let csvContent = "";
+
+  data.forEach((rowArray) => {
+    console.log(rowArray);
+    let row = rowArray.join(",");
+    csvContent += row + "\n";
+  });
+
+  global.csvDownloadContents.push(csvContent);
+}
+
+export function downloadCSV() {
+  const csv = "data:text/csv;charset=utf-8," + (global.csvDownloadContents);
+  const encoded = encodeURI(csv);
+  const link = document.createElement("a");
+  link.setAttribute("href", encoded);
+  link.setAttribute("download", "OpenScoutExport_"+ (new Date().toLocaleString()) + ".csv");
+  link.click();
+
+  global.csvDownloadContents = [];
+}
+
+function roundTo3Decimals(num) {
+  return Math.round((num) * 100) / 100;
+}
 
 function Stats({finalData})
 {
@@ -38,7 +72,7 @@ function Stats({finalData})
       ['Owned Junctions (Beacon)', finalData.matches.reduce((accumulator, currentValue) => accumulator + currentValue.score.beaconOwnedJunctions, 0) / finalData.matches.length],
       ['Ownership Points', finalData.matches.reduce((accumulator, currentValue) => accumulator + currentValue.score.ownershipPoints, 0) / finalData.matches.length],
       ['Circuit Points', finalData.matches.reduce((accumulator, currentValue) => accumulator + currentValue.score.circuitPoints, 0) / finalData.matches.length],
-      ['Circuit Rate', finalData.matches.reduce((accumulator, currentValue) => accumulator + (currentValue.score.circuit ? 1 : 0), 0) / finalData.matches.length * 100 + "%"],
+      ['Circuit Rate (%)', finalData.matches.reduce((accumulator, currentValue) => accumulator + (currentValue.score.circuit ? 1 : 0), 0) / finalData.matches.length * 100],
     ],
   };
 
@@ -48,16 +82,18 @@ function Stats({finalData})
   {
     if(!String(tableData.rows[i][1]).includes(NaN))
     {
+      tableData.rows[i][1] = roundTo3Decimals(tableData.rows[i][1]);
       entirelyNullified = false;
-      break;
     }
   }
 
   return <div>
     <hr/>
     <h1>{finalData.number}</h1>
-    {!entirelyNullified && <a style={{ color: "#92dbfc" }}>Download As .CSV</a>}
-    {!entirelyNullified && <a style={{ color: "#92dbfc", marginInlineStart: 15}}>Generate Scouting Sheet</a>}
+    {!entirelyNullified && <><a className="download-csv-btn" onClick={() => {
+      getCSV(tableData.columns, tableData.rows);
+    }}/><a style={{ color: "#92dbfc" }} onClick={() => {global.csvDownloadContents = []; getCSV(tableData.columns, tableData.rows); downloadCSV()}}>Download As .CSV</a></>}
+    {/* {!entirelyNullified && <a style={{ color: "#92dbfc", marginInlineStart: 15}}>Generate Scouting Sheet</a>} */}
     <a style={{ color: "#92dbfc", marginInlineStart: 15}} href={`https://ftcscout.org/teams/${finalData.number}`} target="_blank">View on FTCScout.org</a>
     {!entirelyNullified && <MDBDatatable entries={100} entriesOptions={[100]} style={{backgroundColor: "transparent"}} bordered hover data={tableData} dark />}
     {entirelyNullified && <p>This team hasn't played a match yet</p>}

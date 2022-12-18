@@ -26,6 +26,7 @@ import { useQuery } from "@apollo/client";
 import { gql } from "@apollo/client";
 import {
     ScoutByNumber,
+    downloadCSV,
     runScoutingReportByTeamNumber,
 } from "../code/ScoutingReport";
 
@@ -231,22 +232,37 @@ function Events() {
 
     return (
         <div>
-            <MDBModal show={runIndepthSearch.length !== 0} onHide={() => setRunIndepthSearch([])}>
+            {runIndepthSearch.length !== 0 && <MDBModal staticBackdrop show={true}>
                 <MDBModalDialog size="xl">
                     <MDBModalContent
                         style={{ backgroundColor: "#303030", color: "white" }}
                     >
                         <MDBModalHeader>
                             <h1>Detailed Scouting Report</h1>
+                            <MDBBtn
+                                onClick={() => {
+                                    setRunIndepthSearch([]);
+                                }}
+                                color="link"
+                            >
+                                Close
+                            </MDBBtn>
                         </MDBModalHeader>
                         <MDBModalBody>
+                            <a style={{ color: "#92dbfc" }} onClick={() => {
+                                global.csvDownloadContents = []
+                                for (var elem of document.getElementsByClassName('download-csv-btn')) {
+                                    elem.click();
+                                }
+                                downloadCSV();
+                            }}>Download All In .CSV</a>
                             {
                                 runIndepthSearch.map((team) => <ScoutByNumber teamNumber={team.teamNumber} />)
                             }
                         </MDBModalBody>
                     </MDBModalContent>
                 </MDBModalDialog>
-            </MDBModal>
+            </MDBModal>}
             <img
                 className="text-center"
                 src={
