@@ -1,5 +1,4 @@
 import React from 'react';
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardHeader, MDBContainer, MDBIcon, MDBInput, MDBTabs, MDBTabsContent, MDBTabsItem, MDBTabsLink, MDBTabsPane, MDBTextArea } from 'mdb-react-ui-kit';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import Search from './pages/Search';
