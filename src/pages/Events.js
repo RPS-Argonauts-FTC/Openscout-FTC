@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
-import { MDBBtn, MDBBtnGroup, MDBCard, MDBCardBody, MDBCardHeader, MDBChip, MDBContainer, MDBIcon, MDBInput, MDBTabs, MDBTabsContent, MDBTabsItem, MDBTabsLink, MDBTabsPane, MDBTextArea, MDBTooltip } from 'mdb-react-ui-kit';
+import React, { useEffect, useState } from 'react';
+import { MDBBtn, MDBBtnGroup, MDBCard, MDBCardBody, MDBCardHeader, MDBChip, MDBContainer, MDBIcon, MDBInput, MDBModal, MDBModalBody, MDBModalContent, MDBModalDialog, MDBModalHeader, MDBTabs, MDBTabsContent, MDBTabsItem, MDBTabsLink, MDBTabsPane, MDBTextArea, MDBTooltip } from 'mdb-react-ui-kit';
 import { useQuery } from '@apollo/client';
 import { gql } from "@apollo/client";
+import { ScoutByNumber, runScoutingReportByTeamNumber } from '../code/ScoutingReport';
 
-function EventCard ({event, ...props}) {
+function EventCard ({event, runIndepthSearch, setRunIndepthSearch, ...props}) {
     return <div style={{ width: '75%', backgroundColor: "#202020", marginBottom: 15, paddingBottom: 15, borderRadius: 15}}>
     <details>
         <summary style={{listStyle: "none"}}>
@@ -15,7 +16,12 @@ function EventCard ({event, ...props}) {
         </div>
         <MDBBtnGroup>
             <MDBBtn color="link" onClick={() => {
-                
+                if (runIndepthSearch !== -1)
+                {
+                    return;
+                }
+
+                setRunIndepthSearch(21630);
             }}>Download Detailed Scouting Report</MDBBtn>
         </MDBBtnGroup>
         </summary>
@@ -71,9 +77,11 @@ function Events() {
             break;
     }
 
-    console.log(eventType);
+    // console.log(eventType);
 
     const szn = 2022
+
+    const [runIndepthSearch, setRunIndepthSearch] = React.useState(-1);
 
     const {loading, error, data} = useQuery(gql`
     {
@@ -103,9 +111,21 @@ function Events() {
     `
     );
 
-    console.log(data);    
+    // console.log(data);    
 
     return <div>
+        <MDBModal staticBackdrop show={runIndepthSearch !== -1}>
+            <MDBModalDialog size='xl'>
+                <MDBModalContent style={{backgroundColor: "#303030", color: "white"}}>
+                    <MDBModalHeader>
+                        <h1>Detailed Scouting Report</h1>
+                    </MDBModalHeader>
+                    <MDBModalBody>
+                        <ScoutByNumber teamNumber={runIndepthSearch} />
+                    </MDBModalBody>
+                </MDBModalContent>
+            </MDBModalDialog>
+        </MDBModal>
         <img className="text-center" src="https://media.discordapp.net/attachments/829319361843036200/1049688339458052176/Group_12.png" style={{objectFit: "contain", width: "100%", height: "50vh", zIndex: -100}}/>
         <p style={{position: "absolute", top: 75, fontSize: 75, color: "#fff", width: "100%", textAlign: "center"}}>Results</p>
         <MDBBtn color="dark" style={{position: "absolute", top: 0, width: "100px", left: 0}} onClick = {() => {
@@ -115,7 +135,7 @@ function Events() {
         </MDBBtn>
         <div className="justify-content-center" style={{position: "absolute", width: "100%", top: 250}}>
             <center style={{zIndex: 100}}>
-                {loading ? <p>Loading...</p> : data.eventsSearch.length === 0 ? <p>No results found.</p> : data.eventsSearch.map((event) => <EventCard event={event} />)}
+                {loading ? <p>Loading...</p> : data.eventsSearch.length === 0 ? <p>No results found.</p> : data.eventsSearch.map((event) => <EventCard runIndepthSearch={runIndepthSearch} setRunIndepthSearch={setRunIndepthSearch} event={event} />)}
             </center>
         </div>
     </div>;
