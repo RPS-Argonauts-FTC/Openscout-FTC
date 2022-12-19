@@ -33,7 +33,7 @@ function Search() {
         <MDBCollapse navbar show={showNav}>
           <MDBNavbarNav className='d-flex w-auto'>
             <MDBNavbarItem>
-              <MDBNavbarLink href='https://argonautsftc.org' target='_blank'>By FTC21630</MDBNavbarLink>
+              <MDBNavbarLink href='https://argonautsftc.org'>By FTC21630</MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
               <MDBNavbarLink href='https://github.com/RPS-Argonauts-FTC/Openscout-FTC' target='_blank'>GitHub</MDBNavbarLink>
