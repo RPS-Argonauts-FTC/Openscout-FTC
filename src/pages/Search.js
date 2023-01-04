@@ -78,8 +78,8 @@ function Search() {
           >
             <MDBIcon fas icon='calendar' className='me-2' /> By Event
           </MDBTabsLink>
-          <MDBTabsLink style={{color: selection !== "event" ? "#92dbfc" : "#202020", 
-          backgroundColor: selection !== "event" ? "#202020" : "#92dbfc",
+          <MDBTabsLink style={{color: selection !== "multiteam" ? "#92dbfc" : "#202020", 
+          backgroundColor: selection !== "multiteam" ? "#202020" : "#92dbfc",
           borderTopRightRadius: 15, borderBottomRightRadius: 15}} onClick={() => {
             setSelection("multiteam");
           }}
