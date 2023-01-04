@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { MDBAutocomplete, MDBBadge, MDBBtn, MDBCard, MDBCardBody, MDBCardHeader, MDBCheckbox, MDBCollapse, MDBContainer, MDBDatepicker, MDBDropdown, MDBDropdownItem, MDBDropdownMenu, MDBDropdownToggle, MDBIcon, MDBInput, MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav, MDBNavbarToggler, MDBTabs, MDBTabsContent, MDBTabsItem, MDBTabsLink, MDBTabsPane, MDBTextArea, MDBTooltip } from 'mdb-react-ui-kit';
 import SearchByEvent from '../components/SearchByEvent';
 import SearchByTeam from '../components/SearchByTeam';
+import SearchByTeamsMultiple from '../components/SearchByTeamsMultiple';
 
 function Search() {
 
@@ -15,6 +16,10 @@ function Search() {
     const searchByEvent = (date, region, eventType) => {
       var path = "/Events?date=" + date + "&region=" + region + "&eventType=" + eventType;
       window.location.href = path;
+    }
+
+    const searchByTeamsMultiple = () => {
+      window.location.href = "/MultipleTeams?query=" + document.getElementById("team-queries").value.replace(" ", "");
     }
 
   return (
@@ -66,13 +71,21 @@ function Search() {
             <MDBIcon fas icon='users' className='me-2' /> By Team
           </MDBTabsLink>
           <MDBTabsLink style={{color: selection !== "event" ? "#92dbfc" : "#202020", 
-          backgroundColor: selection !== "event" ? "#202020" : "#92dbfc",
-          borderTopRightRadius: 15, borderBottomRightRadius: 15}} onClick={() => {
+          backgroundColor: selection !== "event" ? "#202020" : "#92dbfc"}} onClick={() => {
             setSelection("event");
           }}
           active={selection === "event"}
           >
             <MDBIcon fas icon='calendar' className='me-2' /> By Event
+          </MDBTabsLink>
+          <MDBTabsLink style={{color: selection !== "event" ? "#92dbfc" : "#202020", 
+          backgroundColor: selection !== "event" ? "#202020" : "#92dbfc",
+          borderTopRightRadius: 15, borderBottomRightRadius: 15}} onClick={() => {
+            setSelection("multiteam");
+          }}
+          active={selection === "multiteam"}
+          >
+            <MDBIcon fas icon='users' className='me-2' /> By Teams (Multiple Numbers)
           </MDBTabsLink>
         </MDBTabsItem>
       </MDBTabs>
@@ -84,6 +97,9 @@ function Search() {
           </MDBTabsPane>
           <MDBTabsPane show={selection === "event"} style={{width: "100%", padding: 50, paddingTop: 0, backgroundColor: "#101010"}}>
             <SearchByEvent callbackOnSearch={searchByEvent} />
+          </MDBTabsPane>
+          <MDBTabsPane show={selection === "multiteam"} style={{width: "100%", padding: 50, paddingTop: 0, backgroundColor: "#101010"}}>
+            <SearchByTeamsMultiple callbackOnSearch={searchByTeamsMultiple} />
           </MDBTabsPane>
         </MDBTabsContent>
       </center>
